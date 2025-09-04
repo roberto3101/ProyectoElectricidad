@@ -17,6 +17,7 @@ import {
   FaArrowUp
 } from 'react-icons/fa';
 import styles from './Footer.module.css';
+import { BiCurrentLocation } from 'react-icons/bi';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -239,6 +240,9 @@ const Footer = () => {
           <div className={styles.copyright}>
             <p>
               © {currentYear} ElectriPro. Todos los derechos reservados.
+            </p>
+             <p>
+              ©  Desarrollado por Roberto3101
             </p>
             <p className={styles.legal}>
               <Link to="/privacidad">Política de Privacidad</Link>
