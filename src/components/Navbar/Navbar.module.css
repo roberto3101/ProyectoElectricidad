@@ -1,0 +1,490 @@
+/* Navbar Principal */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(0, 8, 20, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  height: 70px;
+  background: rgba(0, 8, 20, 0.98);
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  position: relative;
+  z-index: 10;
+}
+
+.logoIcon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #00d4ff, #7209b7);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.bolt {
+  font-size: 28px;
+  color: #fff;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  animation: electricPulse 2s infinite;
+}
+
+@keyframes electricPulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  }
+  50% { 
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 1));
+  }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoMain {
+  font-family: 'Orbitron', monospace;
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d4ff, #00f5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+
+.logoSub {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: #8892b0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  color: #8892b0;
+  text-decoration: none;
+  font-family: 'Orbitron', monospace;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.navLink:hover::before {
+  left: 100%;
+}
+
+.navLink:hover {
+  color: #00d4ff;
+  transform: translateY(-2px);
+}
+
+.navIcon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.navLink:hover .navIcon {
+  transform: rotate(360deg) scale(1.2);
+}
+
+.navText {
+  position: relative;
+}
+
+.navLine {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  transition: transform 0.3s ease;
+}
+
+.navLink:hover .navLine,
+.navLink.active .navLine {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navLink.active {
+  color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 10px;
+}
+
+/* CTA Button */
+.ctaWrapper {
+  position: relative;
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #00d4ff, #7209b7);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+}
+
+.ctaPulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background: inherit;
+  animation: pulse 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Electric Effect */
+.electricEffect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent,
+    #00d4ff 20%,
+    #00f5ff 40%,
+    #7209b7 60%,
+    #00d4ff 80%,
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: electricFlow 3s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes electricFlow {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Mobile Toggle */
+.mobileToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #00d4ff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+/* Mobile Menu */
+.mobileOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 998;
+}
+
+.mobileMenu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: linear-gradient(135deg, #001830, #000814);
+  border-left: 1px solid rgba(0, 212, 255, 0.2);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.mobileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.mobileLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Orbitron', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: #00d4ff;
+}
+
+.mobileClose {
+  background: none;
+  border: none;
+  color: #8892b0;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.mobileClose:hover {
+  color: #00d4ff;
+}
+
+.mobileLinks {
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 25px;
+  color: #8892b0;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.mobileLink:hover {
+  color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.mobileLinkIcon {
+  font-size: 20px;
+  width: 30px;
+}
+
+.mobileActive {
+  color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.mobileActiveIndicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #00d4ff, #7209b7);
+}
+
+.mobileCta {
+  padding: 20px;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.mobileCtaButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #00d4ff, #7209b7);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.mobileCtaButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+}
+
+.mobileDecoration {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.electricLine {
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(180deg, transparent, #00d4ff, transparent);
+  animation: electricLineFlow 2s infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+
+.electricLine:nth-child(1) { --i: 0; }
+.electricLine:nth-child(2) { --i: 1; }
+.electricLine:nth-child(3) { --i: 2; }
+
+@keyframes electricLineFlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleY(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .navLinks {
+    gap: 5px;
+  }
+  
+  .navLink {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 70px;
+  }
+  
+  .navbar.scrolled {
+    height: 70px;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  .navLinks,
+  .ctaWrapper {
+    display: none;
+  }
+  
+  .mobileToggle,
+  .mobileOverlay,
+  .mobileMenu {
+    display: block;
+  }
+  
+  .logoMain {
+    font-size: 20px;
+  }
+  
+  .logoIcon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .bolt {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileMenu {
+    width: 100%;
+  }
+}

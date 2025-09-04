@@ -1,0 +1,572 @@
+/* Services Section */
+.services {
+  position: relative;
+  padding: 120px 0;
+  background: linear-gradient(180deg, 
+    #000814 0%, 
+    #001830 50%, 
+    #000814 100%);
+  overflow: hidden;
+}
+
+/* Background Pattern */
+.bgPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      #00d4ff 35px,
+      #00d4ff 36px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 35px,
+      #7209b7 35px,
+      #7209b7 36px
+    );
+  pointer-events: none;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 25px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 50px;
+  margin-bottom: 30px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.badge svg {
+  font-size: 20px;
+  color: #00d4ff;
+}
+
+.badge span {
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #00d4ff;
+}
+
+.title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.titleHighlight {
+  background: linear-gradient(135deg, #00d4ff, #7209b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #8892b0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Services Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-bottom: 80px;
+  perspective: 1000px;
+}
+
+/* Card Wrapper */
+.cardWrapper {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Card */
+.card {
+  position: relative;
+  height: 100%;
+  min-height: 450px;
+  padding: 40px 30px;
+  background: rgba(0, 24, 48, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-gradient);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.cardWrapper:hover .card::before {
+  transform: scaleX(1);
+}
+
+/* Card Background Effects */
+.cardBg {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    var(--card-color) 0%,
+    transparent 70%
+  );
+  opacity: 0.05;
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cardGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at top right,
+    var(--card-color) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.cardWrapper:hover .cardGlow {
+  opacity: 0.1;
+}
+
+/* Card Content */
+.cardContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Icon */
+.iconWrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 25px;
+  transform-style: preserve-3d;
+}
+
+.iconBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--card-gradient);
+  border-radius: 20px;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.cardWrapper:hover .iconBg {
+  transform: rotate(45deg) scale(1.1);
+  opacity: 0.2;
+}
+
+.icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-gradient);
+  border-radius: 20px;
+  font-size: 36px;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Title */
+.cardTitle {
+  font-family: 'Orbitron', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.cardWrapper:hover .cardTitle {
+  color: var(--card-color);
+}
+
+/* Card Description */
+.cardDescription {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #8892b0;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+/* Features */
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8892b0;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.featureIcon {
+  color: var(--card-color);
+  font-size: 14px;
+  min-width: 14px;
+}
+
+.cardWrapper:hover .features li {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* Card CTA */
+.cardCta {
+  margin-top: auto;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--card-color);
+  text-decoration: none;
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.cardLink svg {
+  transition: transform 0.3s ease;
+}
+
+.cardLink:hover svg {
+  transform: translateX(5px);
+}
+
+/* Card Number */
+.cardNumber {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: 'Orbitron', monospace;
+  font-size: 60px;
+  font-weight: 900;
+  color: var(--card-color);
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.cardWrapper:hover .cardNumber {
+  opacity: 0.2;
+  transform: scale(1.1);
+}
+
+/* Bottom CTA */
+.bottomCta {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, 
+    rgba(0, 212, 255, 0.05) 0%, 
+    rgba(114, 9, 183, 0.05) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.bottomCta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+    transparent,
+    rgba(0, 212, 255, 0.1),
+    transparent
+  );
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.ctaText {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: #8892b0;
+  margin-bottom: 25px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: linear-gradient(135deg, #00d4ff, #7209b7);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Orbitron', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 60px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+}
+
+.ctaGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(30px);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Decorative Lines */
+.decorativeLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.line1,
+.line2,
+.line3 {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg,
+    transparent,
+    #00d4ff,
+    transparent
+  );
+  opacity: 0.2;
+  animation: lineMove 10s linear infinite;
+}
+
+.line1 {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.line2 {
+  left: 50%;
+  animation-delay: 3s;
+}
+
+.line3 {
+  right: 10%;
+  animation-delay: 6s;
+}
+
+@keyframes lineMove {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: 80px 0;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  .header {
+    margin-bottom: 50px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .card {
+    min-height: 400px;
+    padding: 30px 25px;
+  }
+  
+  .iconWrapper {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .icon {
+    font-size: 28px;
+  }
+  
+  .cardTitle {
+    font-size: 20px;
+  }
+  
+  .cardNumber {
+    font-size: 40px;
+  }
+  
+  .bottomCta {
+    padding: 40px 20px;
+  }
+  
+  .ctaText {
+    font-size: 18px;
+  }
+  
+  .ctaButton {
+    padding: 15px 30px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .badge {
+    padding: 8px 20px;
+  }
+  
+  .badge span {
+    font-size: 10px;
+  }
+  
+  .features {
+    gap: 10px;
+  }
+  
+  .features li {
+    font-size: 13px;
+  }
+}
